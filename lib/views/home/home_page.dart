@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wisata_desa/components/app_appbar.dart';
 import 'package:wisata_desa/components/app_background.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,27 +9,26 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Column(
+        appBar: const AppAppBar(),
+        endDrawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('Desa Wisata XXXXX'),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.menu),
-                  ),
-                ],
+              DrawerHeader(child: Text('Header')),
+              ListTile(
+                title: Text('Test 1'),
+                onTap: () {},
               ),
-              const Divider(
-                color: Colors.black,
-                height: 1,
-              )
+              ListTile(
+                title: Text('Test 2'),
+                onTap: () {},
+              ),
+              ListTile(
+                title: Text('Test 3'),
+                onTap: () {},
+              ),
             ],
           ),
-          backgroundColor: Colors.transparent,
-          toolbarHeight: 80,
         ),
         body: const AppBackground(child: SizedBox()),
       ),
