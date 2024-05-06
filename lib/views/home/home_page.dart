@@ -10,13 +10,26 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: const AppAppBar(),
+        // TODO: finish end drawer
         endDrawer: Drawer(
+          backgroundColor: Color(0xffE2EEC6),
           child: ListView(
-            padding: EdgeInsets.zero,
+            padding: const EdgeInsets.all(8),
             children: [
-              DrawerHeader(child: Text('Header')),
+              Align(
+                alignment: Alignment.topRight,
+                child: IconButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(
+                      Icons.close,
+                      size: 55,
+                    )),
+              ),
               ListTile(
-                title: Text('Test 1'),
+                title: const Text(
+                  'Home',
+                  style: TextStyle(fontSize: 20),
+                ),
                 onTap: () {},
               ),
               ListTile(
