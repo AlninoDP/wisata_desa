@@ -10,6 +10,7 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: const [SizedBox()], // to remove end drawer button
       title: Column(
         children: [
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -31,5 +32,5 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight + 30);
 }

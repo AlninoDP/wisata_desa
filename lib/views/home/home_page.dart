@@ -5,6 +5,8 @@ import 'package:wisata_desa/components/app_appbar.dart';
 import 'package:wisata_desa/components/app_background.dart';
 import 'package:wisata_desa/components/app_drawer.dart';
 import 'package:wisata_desa/views/home/provider/carousel_provider.dart';
+import 'package:wisata_desa/views/home/widgets/about_menu.dart';
+import 'package:wisata_desa/views/home/widgets/menu_button.dart';
 
 class HomePageProvider extends StatelessWidget {
   const HomePageProvider({super.key});
@@ -85,7 +87,65 @@ class HomePage extends StatelessWidget {
                   },
                 ),
 
+                const SizedBox(height: 20),
+
                 //About
+                Container(
+                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: const Color(0xffE2EEC6),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Column(
+                    children: [
+                      AboutMenu(
+                        icon: Icons.star,
+                        iconColor: Colors.amber,
+                        text: 'Rekomendasi Lokasi Wisata Desa XXX',
+                      ),
+                      SizedBox(height: 10),
+                      AboutMenu(
+                        icon: Icons.location_on_sharp,
+                        iconColor: Colors.redAccent,
+                        text: 'Lokasi Tempat Yang Akurat',
+                      ),
+                      SizedBox(height: 10),
+                      AboutMenu(
+                        icon: Icons.info,
+                        iconColor: Colors.lightBlue,
+                        text: 'Informasi Detail Tentang Lokasi Wisata',
+                      )
+                    ],
+                  ),
+                ),
+
+                const SizedBox(height: 20),
+
+                // Button
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(
+                      child: MenuButton(
+                        imagePath: 'assets/icons/list_icon.png',
+                        textMenu: 'List Wisata',
+                      ),
+                    ),
+                    Expanded(
+                      child: MenuButton(
+                        imagePath: 'assets/icons/map_icon.png',
+                        textMenu: 'Buka Peta',
+                      ),
+                    ),
+                    Expanded(
+                      child: MenuButton(
+                        imagePath: 'assets/icons/info_icon.png',
+                        textMenu: 'App Info',
+                      ),
+                    )
+                  ],
+                )
               ],
             ),
           ),
