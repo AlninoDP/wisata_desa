@@ -15,7 +15,7 @@ class HomePageProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => CarouselProvider(),
-      child: HomePage(),
+      child: const HomePage(),
     );
   }
 }
