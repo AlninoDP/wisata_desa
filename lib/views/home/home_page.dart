@@ -1,63 +1,25 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:wisata_desa/components/app_appbar.dart';
 import 'package:wisata_desa/components/app_background.dart';
 import 'package:wisata_desa/components/app_drawer.dart';
+import 'package:wisata_desa/views/home/provider/carousel_provider.dart';
 
-final List<String> imageList = [
-  'assets/icons/list_icon.png',
-  'assets/icons/map_icon.png',
-  'assets/icons/placeholder_icon.png',
-];
+class HomePageProvider extends StatelessWidget {
+  const HomePageProvider({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (context) => CarouselProvider(),
+      child: HomePage(),
+    );
+  }
+}
 
 class HomePage extends StatelessWidget {
-  HomePage({super.key});
-
-  /// TODO: put into viewmodel
-  final List<Widget> imageSliders = imageList
-      .map(
-        (item) => Container(
-          margin: const EdgeInsets.all(5.0),
-          child: ClipRRect(
-              borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-              child: Stack(
-                children: <Widget>[
-                  // image
-                  Image.asset(item, fit: BoxFit.cover, width: 1000.0),
-
-                  // Text
-                  Positioned(
-                    bottom: 0.0,
-                    left: 0.0,
-                    right: 0.0,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color.fromARGB(200, 0, 0, 0),
-                            Color.fromARGB(0, 0, 0, 0)
-                          ],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
-                      child: Text(
-                        'No. ${imageList.indexOf(item)} image',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              )),
-        ),
-      )
-      .toList();
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -71,18 +33,59 @@ class HomePage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                CarouselSlider(
-                  items: imageSliders,
-                  options: CarouselOptions(
-                    autoPlay: true,
-                    aspectRatio: 2,
-                    enlargeCenterPage: true,
-                    viewportFraction: 0.8,
-                    enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                    autoPlayAnimationDuration: const Duration(seconds: 4),
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                  ),
-                )
+                const SizedBox(height: 15),
+
+                // Carousel
+                Consumer<CarouselProvider>(
+                  builder: (context, provider, _) {
+                    return Column(
+                      children: [
+                        CarouselSlider(
+                          items: provider.imageSliders,
+                          carouselController: provider.carouselController,
+                          options: CarouselOptions(
+                            autoPlay: true,
+                            aspectRatio: 2,
+                            enlargeCenterPage: true,
+                            viewportFraction: 0.8,
+                            enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                            autoPlayAnimationDuration:
+                                const Duration(seconds: 4),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            onPageChanged: (index, reason) =>
+                                provider.setIndex(index),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:
+                              provider.imageList.asMap().entries.map((entry) {
+                            return GestureDetector(
+                              onTap: () => provider.carouselController
+                                  .animateToPage(entry.key),
+                              child: Container(
+                                width: 12.0,
+                                height: 12.0,
+                                margin: const EdgeInsets.symmetric(
+                                  vertical: 8.0,
+                                  horizontal: 4.0,
+                                ),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.black.withOpacity(
+                                        provider.currentIndex == entry.key
+                                            ? 0.9
+                                            : 0.4)),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+
+                //About
               ],
             ),
           ),
