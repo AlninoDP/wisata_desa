@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wisata_desa/models/location_marker.dart';
 
-const deskripsiPlaceholder = ''' 
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  Suspendisse sodales maximus sapien eget dapibus.
+const deskripsiPlaceholder =
+    '''Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sodales maximus sapien eget dapibus.
   Aliquam sem quam, lobortis volutpat blandit vitae, sagittis auctor purus.
   Nullam non est ultricies, imperdiet lorem non, consectetur eros.
   Mauris faucibus et purus quis varius. Curabitur non mi mi.
@@ -27,6 +26,7 @@ class LocationMarkerRepoMock {
       imgPath: 'assets/images/img_wisata_2.png',
       lat: '-6.203412384399042',
       long: ' 107.00444188838668',
+      isReccomended: true,
     ),
     LocationMarker(
       namaLokasi: 'Bukit Lorem Ipsum',
@@ -34,6 +34,7 @@ class LocationMarkerRepoMock {
       imgPath: 'assets/images/img_wisata_3.png',
       lat: '-6.206770585140509',
       long: '107.01853949364995',
+      isReccomended: true,
     ),
     LocationMarker(
       namaLokasi: 'Masjid lorem Ipsum',

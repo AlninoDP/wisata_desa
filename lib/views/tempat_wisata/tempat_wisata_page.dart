@@ -28,12 +28,59 @@ class TempatWisataPage extends StatelessWidget {
       body: AppBackground(
         child: Consumer<ListWisataProvider>(
           builder: (context, provider, _) {
-            return ListView.builder(
+            return ListView.separated(
+              padding: const EdgeInsets.all(10),
+              separatorBuilder: (context, index) {
+                return const SizedBox(height: 8);
+              },
               itemCount: provider.locationMarkers.length,
               itemBuilder: (context, index) {
                 final item = provider.locationMarkers[index];
-                return ListTile(
-                  title: Text(item.namaLokasi),
+                return Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                        width: 2,
+                        color: (item.isReccomended == true)
+                            ? const Color(0xffFFDF00)
+                            : Colors.transparent,
+                      )),
+                  child: ListTile(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    tileColor: const Color(0xffE2EEC6),
+                    contentPadding: const EdgeInsets.fromLTRB(10, 2, 5, 5),
+                    title: Text(item.namaLokasi),
+                    subtitle: Text(
+                      item.deskripsiLokasi,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    leading: Container(
+                      width: 70,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        image: DecorationImage(
+                          image: AssetImage(item.imgPath),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    trailing: (item.isReccomended == true)
+                        ? const Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Icon(
+                                Icons.star,
+                                color: Color(0xffFFDF00),
+                                size: 20,
+                              ),
+                            ],
+                          )
+                        : null,
+                    onTap: () {},
+                  ),
                 );
               },
             );

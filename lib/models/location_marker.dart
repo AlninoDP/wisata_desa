@@ -4,7 +4,7 @@ class LocationMarker {
   final String imgPath;
   final String lat;
   final String long;
-  final bool isReccomended = false;
+  final bool isReccomended;
 
   LocationMarker({
     required this.namaLokasi,
@@ -12,5 +12,6 @@ class LocationMarker {
     required this.imgPath,
     required this.lat,
     required this.long,
+    this.isReccomended = false,
   });
 }
