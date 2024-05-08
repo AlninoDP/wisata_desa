@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:wisata_desa/components/app_appbar.dart';
 import 'package:wisata_desa/components/app_background.dart';
@@ -123,25 +124,28 @@ class HomePage extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Button
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
                       child: MenuButton(
                         imagePath: 'assets/icons/list_icon.png',
                         textMenu: 'List Wisata',
+                        onTap: () => context.go('/wisata'),
                       ),
                     ),
                     Expanded(
                       child: MenuButton(
                         imagePath: 'assets/icons/map_icon.png',
                         textMenu: 'Buka Peta',
+                        onTap: () => context.go('/peta'),
                       ),
                     ),
                     Expanded(
                       child: MenuButton(
                         imagePath: 'assets/icons/info_icon.png',
                         textMenu: 'App Info',
+                        onTap: () => context.go('/app_info'),
                       ),
                     )
                   ],

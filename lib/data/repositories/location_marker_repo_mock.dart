@@ -47,7 +47,8 @@ class LocationMarkerRepoMock {
 
   Future<List<LocationMarker>> getLocationMarkers() {
     try {
-      return Future.delayed(const Duration(seconds: 2), () => locationMarkers);
+      return Future.delayed(
+          const Duration(milliseconds: 500), () => locationMarkers);
     } catch (e) {
       debugPrint(e.toString());
       return Future.value([]); // return empty list

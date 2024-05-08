@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wisata_desa/views/home/home_page.dart';
-import 'package:wisata_desa/views/peta_desa/peta_desa_page.dart';
-import 'package:wisata_desa/views/tempat_wisata/tempat_wisata_page.dart';
+import 'package:wisata_desa/core/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,13 +11,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const PetaDesa(),
+      routerConfig: routes,
     );
   }
 }

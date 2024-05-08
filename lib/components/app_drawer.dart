@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wisata_desa/components/drawer_menu.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -20,9 +21,18 @@ class AppDrawer extends StatelessWidget {
                   size: 55,
                 )),
           ),
-          const DrawerMenu(menuText: 'Home'),
-          const DrawerMenu(menuText: 'List Wisata'),
-          const DrawerMenu(menuText: 'Lihat Peta')
+          DrawerMenu(
+            menuText: 'Home',
+            onTap: () => context.go('/'),
+          ),
+          DrawerMenu(
+            menuText: 'List Wisata',
+            onTap: () => context.go('/wisata'),
+          ),
+          DrawerMenu(
+            menuText: 'Lihat Peta',
+            onTap: () => context.go('/peta'),
+          )
         ],
       ),
     );
