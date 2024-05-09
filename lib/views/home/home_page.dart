@@ -131,21 +131,21 @@ class HomePage extends StatelessWidget {
                       child: MenuButton(
                         imagePath: 'assets/icons/list_icon.png',
                         textMenu: 'List Wisata',
-                        onTap: () => context.go('/wisata'),
+                        onTap: () => context.push('/wisata'),
                       ),
                     ),
                     Expanded(
                       child: MenuButton(
                         imagePath: 'assets/icons/map_icon.png',
                         textMenu: 'Buka Peta',
-                        onTap: () => context.go('/peta'),
+                        onTap: () => context.push('/peta'),
                       ),
                     ),
                     Expanded(
                       child: MenuButton(
                         imagePath: 'assets/icons/info_icon.png',
                         textMenu: 'App Info',
-                        onTap: () => context.go('/app_info'),
+                        onTap: () => context.push('/app_info'),
                       ),
                     )
                   ],

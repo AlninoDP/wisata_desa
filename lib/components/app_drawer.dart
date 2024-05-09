@@ -23,15 +23,15 @@ class AppDrawer extends StatelessWidget {
           ),
           DrawerMenu(
             menuText: 'Home',
-            onTap: () => context.go('/'),
+            onTap: () => context.push('/'),
           ),
           DrawerMenu(
             menuText: 'List Wisata',
-            onTap: () => context.go('/wisata'),
+            onTap: () => context.push('/wisata'),
           ),
           DrawerMenu(
             menuText: 'Lihat Peta',
-            onTap: () => context.go('/peta'),
+            onTap: () => context.push('/peta'),
           )
         ],
       ),
